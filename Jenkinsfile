@@ -31,8 +31,8 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat "%VENV%\\Scripts\\python manage.py test myapp.tests.test_views"
-                bat "%VENV%\\Scripts\\python manage.py test myapp.tests.test_models"
+                bat "%VENV%\\Scripts\\python manage.py test app.tests.test_views"
+                bat "%VENV%\\Scripts\\python manage.py test app.tests.test_models"
             }
         }
 
@@ -64,9 +64,9 @@ pipeline {
         //     steps {
         //         withCredentials([sshUserPrivateKey(credentialsId: 'my-ssh-cred-key', keyFileVariable: 'SSH_KEY')]) {
         //             bat '''
-        //                 ssh -i %SSH_KEY% -o StrictHostKeyChecking=no deploy@myapp.example.com ^
+        //                 ssh -i %SSH_KEY% -o StrictHostKeyChecking=no deploy@app.example.com ^
         //                 "docker pull imrandocker24/djredcledockerjenkins2:latest && ^
-        //                 docker-compose -f /opt/myapp/docker-compose.yml up -d --force-recreate"
+        //                 docker-compose -f /opt/app/docker-compose.yml up -d --force-recreate"
         //             '''
         //         }
         //     }
